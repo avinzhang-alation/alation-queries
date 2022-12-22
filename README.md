@@ -33,3 +33,22 @@ select
  where is_active = 'true'
  Group By AG.group_name;
 ```
+
+* List of article custom fields being created
+```
+SELECT 
+  a.title AS article_title,
+  date(ch.ts_updated) AS article_updated,
+  u.display_name,
+  ch.field_name,
+  a.article_url,
+  ch.action,
+  ch.value
+FROM public.curation_history ch
+LEFT JOIN public.article a 
+ON a.article_id = ch.object_id
+LEFT JOIN public.users u 
+ON ch.user_id = u.user_id
+WHERE ch.object_type = 'article'
+ORDER BY ch.object_id ASC;
+```

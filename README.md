@@ -19,3 +19,17 @@ WHERE
               WHERE  column_name = 'steward'
               AND    table_name = 'bi_report');
 ```
+
+* Count users from each user group
+```
+select 
+ AG.group_name,
+ count(distinct U.user_id) AS count_of_users
+ FROM users AS U
+ left join user_group_membership AS G
+ ON G.user_id = U.user_id
+ left join alation_group as AG
+ on AG.group_id = G.group_id
+ where is_active = 'true'
+ Group By AG.group_name;
+```

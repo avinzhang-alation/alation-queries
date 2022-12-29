@@ -52,3 +52,9 @@ ON ch.user_id = u.user_id
 WHERE ch.object_type = 'article'
 ORDER BY ch.object_id ASC;
 ```
+
+* BI objects
+  ** bi-reports that have domain vs total 
+  ```
+  select count(*) as has_domain, (select count(*) from bi_report) as total from public.bi_report br inner join domain_members dm on br.bi_report_id = dm.object_id where dm.object_type = 'bi_report'
+  ```

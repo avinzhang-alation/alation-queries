@@ -26,7 +26,8 @@
   select count(*) as has_domain, (select count(*) from bi_report) as total from public.bi_report br inner join domain_members dm on br.bi_report_id = dm.object_id where dm.object_type = 'bi_report'
   ```
 
-* Count users from each user group
+
+## Count users from each user group
 ```
 select 
  AG.group_name,
@@ -40,7 +41,8 @@ select
  Group By AG.group_name;
 ```
 
-* List of article custom fields being created
+
+## List of article custom fields being created
 ```
 SELECT 
   a.title AS article_title,
